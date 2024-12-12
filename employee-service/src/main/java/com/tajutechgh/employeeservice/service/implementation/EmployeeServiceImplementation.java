@@ -2,6 +2,7 @@ package com.tajutechgh.employeeservice.service.implementation;
 
 import com.tajutechgh.employeeservice.dto.EmployeeDto;
 import com.tajutechgh.employeeservice.entity.Employee;
+import com.tajutechgh.employeeservice.exception.ResourceNotFoundException;
 import com.tajutechgh.employeeservice.mapper.EmployeeMapper;
 import com.tajutechgh.employeeservice.repository.EmployeeRepository;
 import com.tajutechgh.employeeservice.service.EmployeeService;
@@ -30,7 +31,10 @@ public class EmployeeServiceImplementation implements EmployeeService {
     @Override
     public EmployeeDto getEmployeeById(Long employeeId) {
 
-        Employee employee = employeeRepository.findById(employeeId).get();
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow(
+
+            () -> new ResourceNotFoundException("Employee", "employeeId", employeeId)
+        );
 
         EmployeeDto employeeDto = EmployeeMapper.mapToEmployeeDto(employee);
 
@@ -50,7 +54,7 @@ public class EmployeeServiceImplementation implements EmployeeService {
 
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(
 
-            () -> new RuntimeException("Employee not found with id: " + employeeId)
+            () -> new ResourceNotFoundException("Employee", "employeeId", employeeId)
         );
 
         employee.setFirstName(employeeDto.getFirstName());
@@ -66,7 +70,7 @@ public class EmployeeServiceImplementation implements EmployeeService {
     public EmployeeDto deleteEmployee(Long employeeId) {
 
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(
-            () -> new RuntimeException("Employee not found with id: " + employeeId)
+            () -> new ResourceNotFoundException("Employee", "employeeId", employeeId)
         );
 
         employeeRepository.delete(employee);

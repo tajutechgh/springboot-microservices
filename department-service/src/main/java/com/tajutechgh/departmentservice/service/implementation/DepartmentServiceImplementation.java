@@ -2,6 +2,7 @@ package com.tajutechgh.departmentservice.service.implementation;
 
 import com.tajutechgh.departmentservice.dto.DepartmentDto;
 import com.tajutechgh.departmentservice.entity.Department;
+import com.tajutechgh.departmentservice.exception.ResourceNotFoundException;
 import com.tajutechgh.departmentservice.mapper.DepartmentMapper;
 import com.tajutechgh.departmentservice.repository.DepartmentRepository;
 import com.tajutechgh.departmentservice.service.DepartmentService;
@@ -35,6 +36,11 @@ public class DepartmentServiceImplementation implements DepartmentService {
 
         Department department = departmentRepository.findByDepartmentCode(departmentCode);
 
+        if (department == null) {
+
+            throw new ResourceNotFoundException("Department", "departmentCode", departmentCode);
+        }
+
         DepartmentDto departmentDto = DepartmentMapper.mapToDepartmentDto(department);
 
         return departmentDto;
@@ -52,7 +58,8 @@ public class DepartmentServiceImplementation implements DepartmentService {
     public DepartmentDto updateDepartment(Long departmentId, DepartmentDto departmentDto) {
 
         Department department = departmentRepository.findById(departmentId).orElseThrow(
-            () -> new RuntimeException("Department not found with id: " + departmentId)
+
+            () -> new ResourceNotFoundException("Department", "departmentId", departmentId)
         );
 
         department.setDepartmentName(departmentDto.getDepartmentName());
@@ -68,7 +75,8 @@ public class DepartmentServiceImplementation implements DepartmentService {
     public DepartmentDto deleteDepartment(Long departmentId) {
 
         Department department = departmentRepository.findById(departmentId).orElseThrow(
-            () -> new RuntimeException("Department not found with id: " + departmentId)
+
+            () -> new ResourceNotFoundException("Department", "departmentId", departmentId)
         );
 
         departmentRepository.delete(department);
