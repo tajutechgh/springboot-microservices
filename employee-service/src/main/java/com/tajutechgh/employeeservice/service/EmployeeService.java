@@ -1,5 +1,6 @@
 package com.tajutechgh.employeeservice.service;
 
+import com.tajutechgh.employeeservice.dto.ApiResponseDto;
 import com.tajutechgh.employeeservice.dto.EmployeeDto;
 import com.tajutechgh.employeeservice.entity.Employee;
 
@@ -9,7 +10,7 @@ public interface EmployeeService {
 
     EmployeeDto saveEmployee(EmployeeDto employeeDto);
 
-    EmployeeDto getEmployeeById(Long employeeId);
+    ApiResponseDto getEmployeeById(Long employeeId);
 
     List<EmployeeDto> getAllEmployees();
 

@@ -1,5 +1,6 @@
 package com.tajutechgh.employeeservice.controller;
 
+import com.tajutechgh.employeeservice.dto.ApiResponseDto;
 import com.tajutechgh.employeeservice.dto.EmployeeDto;
 import com.tajutechgh.employeeservice.service.EmployeeService;
 import org.springframework.http.HttpStatus;
@@ -30,11 +31,11 @@ public class EmployeeController {
 
     // TODO: Get Employee
     @GetMapping("/get/{employee-id}")
-    public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("employee-id") Long employeeId) {
+    public ResponseEntity<ApiResponseDto> getEmployeeById(@PathVariable("employee-id") Long employeeId) {
 
-        EmployeeDto employee = employeeService.getEmployeeById(employeeId);
+        ApiResponseDto apiResponseDto = employeeService.getEmployeeById(employeeId);
 
-        return new ResponseEntity<>(employee, HttpStatus.OK);
+        return new ResponseEntity<>(apiResponseDto, HttpStatus.OK);
     }
 
     // TODO: Get All Employees

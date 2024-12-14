@@ -57,10 +57,11 @@ public class DepartmentServiceImplementation implements DepartmentService {
     @Override
     public DepartmentDto updateDepartment(Long departmentId, DepartmentDto departmentDto) {
 
-        Department department = departmentRepository.findById(departmentId).orElseThrow(
+        Department department = departmentRepository.findById(departmentId).get();
 
-            () -> new ResourceNotFoundException("Department", "departmentId", departmentId)
-        );
+        if (department == null) {
+            throw new ResourceNotFoundException("Department", "departmentId", departmentId);
+        }
 
         department.setDepartmentName(departmentDto.getDepartmentName());
         department.setDepartmentDescription(departmentDto.getDepartmentDescription());
@@ -74,10 +75,11 @@ public class DepartmentServiceImplementation implements DepartmentService {
     @Override
     public DepartmentDto deleteDepartment(Long departmentId) {
 
-        Department department = departmentRepository.findById(departmentId).orElseThrow(
+        Department department = departmentRepository.findById(departmentId).get();
 
-            () -> new ResourceNotFoundException("Department", "departmentId", departmentId)
-        );
+        if (department == null) {
+            throw new ResourceNotFoundException("Department", "departmentId", departmentId);
+        }
 
         departmentRepository.delete(department);
 
