@@ -4,14 +4,16 @@ public class ApiResponseDto {
 
     private EmployeeDto employee;
     private DepartmentDto department;
+    private OrganizationDto organization;
 
     public ApiResponseDto() {
 
     }
 
-    public ApiResponseDto(EmployeeDto employee, DepartmentDto department) {
+    public ApiResponseDto(EmployeeDto employee, DepartmentDto department, OrganizationDto organization) {
         this.employee = employee;
         this.department = department;
+        this.organization = organization;
     }
 
     public EmployeeDto getEmployee() {
@@ -28,5 +30,13 @@ public class ApiResponseDto {
 
     public void setDepartment(DepartmentDto department) {
         this.department = department;
+    }
+
+    public OrganizationDto getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(OrganizationDto organization) {
+        this.organization = organization;
     }
 }

@@ -27,7 +27,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 LocalDateTime.now(),
                 exception.getMessage(),
                 webRequest.getDescription(false),
-                "USER_NOT_FOUND"
+                "DEPARTMENT_NOT_FOUND"
         );
 
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);

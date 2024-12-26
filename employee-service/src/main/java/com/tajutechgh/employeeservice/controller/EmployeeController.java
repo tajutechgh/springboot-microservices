@@ -30,8 +30,8 @@ public class EmployeeController {
     }
 
     // TODO: Get Employee
-    @GetMapping("/get/{employee-id}")
-    public ResponseEntity<ApiResponseDto> getEmployeeById(@PathVariable("employee-id") Long employeeId) {
+    @GetMapping("/get/{employeeId}")
+    public ResponseEntity<ApiResponseDto> getEmployeeById(@PathVariable("employeeId") Long employeeId) {
 
         ApiResponseDto apiResponseDto = employeeService.getEmployeeById(employeeId);
 
@@ -48,8 +48,8 @@ public class EmployeeController {
     }
 
     // TODO: Update Employee
-    @PutMapping("/update/{employee-id}")
-    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("employee-id") Long employeeId, @RequestBody EmployeeDto employeeDto) {
+    @PutMapping("/update/{employeeId}")
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("employeeId") Long employeeId, @RequestBody EmployeeDto employeeDto) {
 
         EmployeeDto updatedEmployee = employeeService.updateEmployee(employeeId, employeeDto);
 
@@ -57,8 +57,8 @@ public class EmployeeController {
     }
 
     // TODO: Delete Employee
-    @DeleteMapping("/delete/{employee-id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable("employee-id") Long employeeId) {
+    @DeleteMapping("/delete/{employeeId}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable("employeeId") Long employeeId) {
 
         employeeService.deleteEmployee(employeeId);
 

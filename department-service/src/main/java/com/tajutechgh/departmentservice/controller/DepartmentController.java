@@ -28,8 +28,8 @@ public class DepartmentController {
     }
 
     // TODO: Get Department
-    @GetMapping("/get/{department-code}")
-    public ResponseEntity<DepartmentDto> getDepartmentByCode(@PathVariable("department-code") String departmentCode) {
+    @GetMapping("/get/{departmentCode}")
+    public ResponseEntity<DepartmentDto> getDepartmentByCode(@PathVariable("departmentCode") String departmentCode) {
 
         DepartmentDto departmentDto = departmentService.getDepartmentByCode(departmentCode);
 
@@ -46,8 +46,8 @@ public class DepartmentController {
     }
 
     // TODO: Update Department
-    @PutMapping("/update/{department-id}")
-    public ResponseEntity<DepartmentDto> updateDepartment(@PathVariable("department-id") Long departmentId, @RequestBody DepartmentDto departmentDto) {
+    @PutMapping("/update/{departmentId}")
+    public ResponseEntity<DepartmentDto> updateDepartment(@PathVariable("departmentId") Long departmentId, @RequestBody DepartmentDto departmentDto) {
 
         DepartmentDto updatedDepartment = departmentService.updateDepartment(departmentId, departmentDto);
 
@@ -55,8 +55,8 @@ public class DepartmentController {
     }
 
     // TODO: Delete Department
-    @DeleteMapping("/delete/{department-id}")
-    public ResponseEntity<String> deleteDepartment(@PathVariable("department-id") Long departmentId) {
+    @DeleteMapping("/delete/{departmentId}")
+    public ResponseEntity<String> deleteDepartment(@PathVariable("departmentId") Long departmentId) {
 
         departmentService.deleteDepartment(departmentId);
 
