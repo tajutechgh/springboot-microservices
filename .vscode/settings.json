@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "springframework"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "disabled"
 }

@@ -1,9 +1,17 @@
 package com.tajutechgh.employeeservice.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "API Response")
 public class ApiResponseDto {
 
+    @Schema(description = "Employee Details")
     private EmployeeDto employee;
+
+    @Schema(description = "Department Details")
     private DepartmentDto department;
+
+    @Schema(description = "Organization Details")
     private OrganizationDto organization;
 
     public ApiResponseDto() {

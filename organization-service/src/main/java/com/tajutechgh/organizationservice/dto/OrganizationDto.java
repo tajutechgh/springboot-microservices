@@ -1,13 +1,26 @@
 package com.tajutechgh.organizationservice.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.time.LocalDateTime;
 
+@Schema(
+    description = "Organization Service Dto"
+)
 public class OrganizationDto {
 
     private Long id;
+
+    @Schema(description = "Organization Name")
     private String organizationName;
+
+    @Schema(description = "Organization Description")
     private String organizationDescription;
+
+    @Schema(description = "Organization Code")
     private String organizationCode;
+
+    @Schema(description = "Created Date")
     private LocalDateTime createdDate;
 
     public OrganizationDto() {

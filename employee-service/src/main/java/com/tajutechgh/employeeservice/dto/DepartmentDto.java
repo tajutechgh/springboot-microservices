@@ -1,10 +1,19 @@
 package com.tajutechgh.employeeservice.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Department Details")
 public class DepartmentDto {
 
     Long id;
+
+    @Schema(description = "Department Name")
     String departmentName;
+
+    @Schema(description = "Department Description")
     String departmentDescription;
+
+    @Schema(description = "Department Code")
     String departmentCode;
 
     public DepartmentDto() {
